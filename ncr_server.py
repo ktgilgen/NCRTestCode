@@ -39,11 +39,11 @@ def uploaded_file(filename):
 ##### END NCB Template code #####
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def mainPage():
     year = datetime.datetime.now().year
     mvars = ["A", "B", "C", "D", "U", "V"] 
-    return render_template('index.html', year = year, mvars = mvars, mcount = len( list(db.sampleIzh.find())) , models = list( db.sampleIzh.find()) )
+    return render_template('index.html', year = year, mvars = mvars, mcount = len( list(db.sampleIzh.find())) ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():
 	modelsdb = db.sampleIzh
