@@ -3,7 +3,7 @@ from werkzeug import secure_filename
 import datetime, os
 import bson
 import json
-import bson.json_util
+from bson import json_util
 from bson.json_util import dumps
 import pymongo
 from pymongo import MongoClient
@@ -14,15 +14,7 @@ uploadFolder = 'uploads'
 allowedFileExtension = set(['json','py'])
 client = MongoClient("mongodb://braintest:braintest@ds041167.mongolab.com:41167/brainlab_test")
 db = client.brainlab_test
-izhCollection = db.sampleIzh
-lifCollection = db.sampleLIF
 app.config['UPLOAD_FOLDER'] = uploadFolder
-izh = ''
-lif = ''
-contains = "neuron"
-scope = ''
-queryResults = ''
-numResults = ''
 
 ##### NCB Template Code #####
 def allowed_file(filename):
@@ -51,12 +43,15 @@ def uploaded_file(filename):
 def mainPage():
     year = datetime.datetime.now().year
     mvars = ["A", "B", "C", "D", "U", "V"] 
-    return render_template('index.html', year = year, mvars = mvars, mcount = 0)
+    return render_template('index.html', year = year, mvars = mvars, mcount = len( list(db.sampleIzh.find())) , models = list( db.sampleIzh.find()) )
 
+def getmodels():
+	modelsdb = db.sampleIzh
+	models = list(modelsdb.find())
+	return json_util.dumps(models)
 
 def displayResults():
-    global contains
-    return render_template('index.html', year = year, returned = izhCollection.find_one( {"entity_type": contains} ), count = 48)#numResults)
+    return render_template('index.html', year = year, returned = izhCollection.find_one( {"entity_type": "neuron"} ), count = 48)#numResults)
 
 @app.route('/get_models', methods = ['GET'])
 def getmodels():
