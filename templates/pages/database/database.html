@@ -23,7 +23,7 @@
             <input id="SearchIzhikevichBox" type="checkbox" name="izh" value="izhOn">Izhikevich
                 </label>
         <label class="checkbox inline">
-            <input id="SearchLIFBox" type="checkbox" name="lif" value="lifOn">L.I.F.
+            <input id="SearchLIFBox" type="checkbox" name="lif" value="lifOn">H.H.
                 </label>
         <label class="span4">Contains: </label>
         <input id="SearchContains" type="text" class="input-medium search-query span4" name="contains" ng-model="searchWord">
@@ -42,7 +42,7 @@
                 <th>Models {{mcount}}</th> 
                     <th data-ng-repeat="mvar in mvars">{{mvar}}</th>
                 <th>{{mvar}}</th>
-                    <tr data-ng-repeat="model in models">
+                    <tr data-ng-repeat="model in returnedModels">
                         <td>1</td>
                         <td>{{ '{{model._id}}' }} </td>
                         <td>{{ '{{model.a}}' }}</td>

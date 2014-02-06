@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, redirect, request, url_for, jsonify
+﻿from flask import Flask, render_template, send_from_directory, redirect, request, url_for, jsonify
 from werkzeug import secure_filename
 import datetime, os
 import bson
@@ -53,11 +53,11 @@ def getmodels():
 def displayResults():
     return render_template('index.html', year = year, returned = izhCollection.find_one( {"entity_type": "neuron"} ), count = 48)#numResults)
 
-@app.route('/get_models', methods = ['GET'])
-def getmodels():
-	modelsdb = izhCollection
-	models = list(modelsdb.find())
-	return json_util.dumps(models)
+@app.route('/get_db', methods = ['GET'])
+def get_db():
+	modelsdb = db.sampleIzh
+	returnedModels = list(modelsdb.find())
+	return json_util.dumps(returnedModels)
 
 
 # Serves static resources like css, js, images, etc.
@@ -67,4 +67,3 @@ def serveStaticResource(resource):
 
 if __name__ == '__main__':
     app.run()
-

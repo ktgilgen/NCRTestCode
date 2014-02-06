@@ -1,16 +1,12 @@
-//This document serves as the form method for posting the web application variables to the server to run functions
-
 // variables for search status
 var request, finished;
 
-function getmodels(callback) {
-    // Get the current models via AJAX
-    $.ajax({ url: '/get_models', }).done(function (response) {
-        var models = JSON.parse(response);
-        // since this call is asynchronous, we need to pass the
-                                         
-        callback(models);
-    });
+function DBController($scope, $resource) {
+    alert("THIS IS BEING CALLED");
+    //define a new model resource that will simplify interaction between the web server and the client
+
+    //This is for getting all models
+    var DB = $resource('/get_db');
 }
 
 // search on submit event
@@ -22,9 +18,7 @@ $("#searchModelsForm").submit(function(event) {
         //HACK
  var formData = new FormData($(this)[0]);
   formData.append("contains", "test");
-  
-  
-  
+   
 		//should do some form checking sometime
 		
         // initiate request
