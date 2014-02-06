@@ -7,7 +7,7 @@
  -->
 
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app> <!--ng-app="ModelManager">-->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,11 @@
         <title>Neo-Cortical Repository</title>
 
         <link rel="icon" type="image/png" href="/assets/ico/ncs_favicon.png">
-
+        
+        <!-- NCR Stylesheets -->
+        <link rel="stylesheet" href="assets/css/ncr/styles_reports.css" type="text/css">
+        <!-- End NCR Stylesheets -->
+                
         <link href="assets/css/lib/bootstrap.min.css" rel="stylesheet">
         <link href="assets/css/ncb/main.css" rel="stylesheet">
         <link href="assets/css/ncb/modelbuilder.css" rel="stylesheet">
@@ -44,12 +48,18 @@
     <script src="assets/js/lib/store.js"></script>
     <script src="assets/js/lib/html5shiv.js"></script>
     <script src="assets/js/lib/underscore.js"></script>
-
+    <script src="assets/js/lib/angular-resource.js"></script>
+    <script src="assets/js/lib/async.js"></script>
     <script src="assets/js/ncb/init.js"></script>
+    <script src="assets/js/ncr/ModelManager.js"></script>
+        <!-- Report Scripts -->
+        <script src="assets/js/ncr/reports/sample_data.js"></script>
+        <script src="assets/js/ncr/reports/line-graph.js"></script>
+
 
     <!-- Load Controllers -->
-    <script src="assets/js/ncb/controllers/modelcontroller.js"></script>
-    <script src="assets/js/ncr/controllers/dbcontroller.js"></script>
+        <script src="assets/js/ncr/controllers/ModelController.js"></script>
+
 
     </body>
 </html>

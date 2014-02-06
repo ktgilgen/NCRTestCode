@@ -46,9 +46,9 @@ def mainPage():
     return render_template('index.html', year = year, mvars = mvars, mcount = len( list(db.sampleIzh.find())) ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():
-	modelsdb = db.sampleIzh
-	models = list(modelsdb.find())
-	return json_util.dumps(models)
+    modelsdb = db.sampleIzh
+    models = list(modelsdb.find())  
+    return json_util.dumps(models)
 
 def displayResults():
     return render_template('index.html', year = year, returned = izhCollection.find_one( {"entity_type": "neuron"} ), count = 48)#numResults)
