@@ -32,30 +32,9 @@
 <div class="span7 offset1">    
     <!-- Neuron Collapsable -->
     {% include 'pages/database/components/neurons.html' %}
+    {% include 'pages/database/components/channels.html' %}
     
-    
-    
-    <table class="table table-bordered table-hover" > <!--data-ng-controller="DBController"> -->
-        <thead>
-            <tr>
-                <th>Models {{mcount}}</th> 
-                <th data-ng-repeat="mvar in mvars">{{mvar}}</th>
-                <th>{{mvar}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="model in db">
-                <td>1</td>
-                <td>{{ '{{model.specification.parameters.a}}' }}</td>
-                <td>{{ '{{model.specification.parameters.b}}' }}</td>
-                <td>{{ '{{model.specification.parameters.c}}' }}</td>
-                <td>{{ '{{model.specification.parameters.d}}' }}</td>
-                <td>{{ '{{model.specification.parameters.u}}' }}</td>
-                <td>{{ '{{model.specification.parameters.v}}' }}</td>
-            </tr>
-        </tbody>
-    </table>
-    
+    {% include 'pages/database/components/neuronTable.html' %}    
     <ul class="pagination">
         <li><a href="#">Prev</a></li>
         <li><a href="#">1</a></li>
