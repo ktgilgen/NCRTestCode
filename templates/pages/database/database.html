@@ -31,22 +31,7 @@
 <!-- The table displays the results of the database query by the server. Currently structured for displaying details of Izhikevich models. -->
 <div class="span7 offset1">    
     <!-- Neuron Collapsable -->
-    <div class="row">
-        <div class="span12 collapse-group">
-            <h2><a data-toggle="collapse" data-target="#options">Neuron</h2></a>
-            <div class="collapse" id="options">
-                <p>Search Neuron Models based on the parameters below.</p>
-                <!-- Model Type -->
-                <div class="container">
-                {% include 'pages/database/components/IZHNeuronCollapse.html' %} 
-                {% include 'pages/database/components/HHNeuronCollapse.html' %} 
-                {% include 'pages/database/components/NCSNeuronCollapse.html' %} 
-                </div>
-                <!-- End Model Type -->
-            </div>
-        </div>
-    </div>
-
+    {% include 'pages/database/components/neurons.html' %}
     
     
     
