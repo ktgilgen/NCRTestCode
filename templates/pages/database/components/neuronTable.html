@@ -2,19 +2,22 @@
     <thead>
         <tr>
             <th>Models {{mcount}}</th> 
-            <th data-ng-repeat="mvar in mvars">{{mvar}}</th>
-            <th>{{mvar}}</th>
+            <th>ID</th>
+            <th>Author</th>
+            <th>Type</th>
+            <th>Description</th>
+
         </tr>
     </thead>
     <tbody>
-        <tr data-ng-repeat="model in db">
-            <td>1</td>
-            <td>{{ '{{model.specification.parameters.a}}' }}</td>
-            <td>{{ '{{model.specification.parameters.b}}' }}</td>
-            <td>{{ '{{model.specification.parameters.c}}' }}</td>
-            <td>{{ '{{model.specification.parameters.d}}' }}</td>
-            <td>{{ '{{model.specification.parameters.u}}' }}</td>
-            <td>{{ '{{model.specification.parameters.v}}' }}</td>
+        {% for model in db %}
+        <tr>
+            <td></td>
+            <td>{{ model._id }}</td>
+            <td>{{ model.author }}</td>
+            <td>{{ model.specification.type }}</td>
+            <td>{{ model.description }}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>

@@ -1,4 +1,4 @@
-﻿from flask import Flask, render_template, send_from_directory, redirect, request, url_for, jsonify
+from flask import Flask, render_template, send_from_directory, redirect, request, url_for, jsonify
 from werkzeug import secure_filename
 import datetime, os
 import bson
@@ -42,8 +42,9 @@ def uploaded_file(filename):
 @app.route('/', methods=['GET'])
 def mainPage():
     year = datetime.datetime.now().year
-    mvars = ["A", "B", "C", "D", "U", "V"] 
-    return render_template('index.html', year = year, mvars = mvars, mcount = len( list(db.sampleIzh.find())) ) #, models = list( db.sampleIzh.find()) )
+    modelList = list( db.sampleIzh.find() )
+    modelList.extend(  list(db.sampleLIF.find() )  )
+    return render_template('index.html', year = year, mcount = len( modelList), db =  modelList ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():
     modelsdb = db.sampleIzh
