@@ -79,12 +79,13 @@ item1 = connection.ModelInfo({
 
 for x in range(0, 11):
     item1['_id'] = str(x)
-    print item1.structure.description
     item1.save() #auto calls validate
 
 for y in range(0, 4):
-    found = connection.brainlab_test.Channels.find({"_id": str(y)})
-    print json.dumps(found)
+    found = connection.brainlab_test.Channels.one({"_id": str(y)})
+    print found
+    print
+    print
 
 
 
