@@ -1,0 +1,17 @@
+/**
+ * CSS snippet courtesy of http://stackoverflow.com/questions/10747267/twitter-bootstrap-sideways-caret
+ *
+ */
+.right-caret {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #000000;
+    display: inline-block;
+    height: 0;
+    opacity: 0.3;
+    vertical-align: top;
+    width: 0;
+}
+
+.dropdown-header{display:block;padding:3px 20px;font-size:16px;line-height:1.428571429;color:#00F}
+

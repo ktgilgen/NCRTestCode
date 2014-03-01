@@ -44,6 +44,7 @@ def mainPage():
     year = datetime.datetime.now().year
     modelList = list( db.sampleIzh.find() )
     modelList.extend(  list(db.sampleLIF.find() )  )
+    #modelList = list(db.Channels.find())
     return render_template('index.html', year = year, mcount = len( modelList), db =  modelList ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():

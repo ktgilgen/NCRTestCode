@@ -9,35 +9,30 @@
 
 <!-- Form for sending variable data such as the model type check boxes, scope dropdown, and search words -->
 <div id="database" class="container page" ng-controller="DBController">
-<form id="searchModelsForm" class="form-search" method="POST" enctype="multipart/form-data"> <!-- ng-app="ModelManager">-->
-    <fieldset>
-        <legend>Model Search</legend> 
-        <label class="span4">Scope: </label>
-        <select id="SearchScope" class="span4" name="scope">
-            <option>My Models</option>
-            <option>My Lab</option>
-            <option>My Region</option>
-            <option>Global</option>
-        </select>
-        <label class="span4">Contains: </label>
-        <input id="SearchContains" type="text" class="input-medium search-query span4" name="contains" ng-model="searchWord">
-            <button id="SearchSubmit" type="submit" class="btn" >Search</button>
-            </fieldset>
-</form>
-<div>
-    Model Details and Options here. Existing reports. Promote button. Etc.
+<div><br/><br/><br/></div>
+<div><br/></div>
+<!-- The table displays the results of the database query by the server. Currently structured for displaying previews of models. -->
+<div class="btn-group">    
+    <!-- Largest Categories -->
+    {% include 'pages/database/Dropdowns/Descriptors.html' %}
+        
+    <!-- Models -->
+    {% include 'pages/database/Dropdowns/ModelTypes.html' %}
+
+    <!-- Params -->
+    {% include 'pages/database/Dropdowns/Params.html' %}
+
+    <!-- Scopes -->
+    {% include 'pages/database/Dropdowns/Scopes.html' %}
+
 </div>
-
-<!-- The table displays the results of the database query by the server. Currently structured for displaying details of Izhikevich models. -->
-<div class="span7 offset1">    
-    <!-- Neuron Collapsable -->
-    {% include 'pages/database/components/neurons.html' %}
-    {% include 'pages/database/components/channels.html' %}
     
-    {% include 'pages/database/components/neuronTable.html' %} 
-    {% include 'pages/database/components/modelInfo.html' %} <!-- Model Info Modal -->
-    {% include 'pages/database/components/modelInfoLIF.html' %} <!-- Model Info Modal -->
-
+    <br/>
+    <br/>
+    <!-- Sample Model Table -->
+    {% include 'pages/database/components/neuronTable.html' %}
+    
+    {% if mcount >= 10 %}
     <br/><br/>
     <ul class="pagination">
         <li><a href="#">Prev</a></li>
@@ -45,6 +40,6 @@
         <li><a href="#">2</a></li>
         <li><a href="#">Next</a></li>
     </ul>
-</div>
+    {% endif %}
 
 </div>
