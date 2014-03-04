@@ -40,6 +40,36 @@ def uploaded_file(filename):
 
 
 @app.route('/', methods=['GET'])
+def search_scopes():
+    #Get the scope selection
+    scope = 'lab'
+    user = list( db.Users.find( {'_id' : '6'}) )
+    modelList = []
+    sampleList = list(db.Channels.find())
+    userIDList = []
+    userNameList = []
+    labList = []
+    collectionSearchList = ['Channels', 'Neuron', 'Neuron_Group']
+    
+    #Should add other ways to double check since may have duplicate names
+    if scope =='global':
+        return render_template('index.html', year = 2014, mcount = len(sampleList), db = sampleList )
+    if scope == 'personal':
+        userIDList = list(user)
+    elif scope == 'lab':
+        labList = db.Labs.find( {'_id' : 'lab2'}, {'Users' : 1} )
+        userIDList = list(labList[0]['Users'])
+        #Create list of First + Last name of each author
+    for user in userIDList:
+        currentUser = db.Users.find({'_id' : user})
+        if currentUser:
+            userNameList.insert(0,  str(currentUser[0]['First_Name'] + " " + currentUser[0]['Last_Name']) )
+            modelList.extend( db.Channels.find({'author': userNameList[0]}) )
+    #Get list of users included
+    #Get models with those users into the list
+    #Return the list
+    return render_template('index.html', year = userNameList, mcount = len(modelList), db = modelList )
+
 def mainPage():
     year = datetime.datetime.now().year
     modelList = list( db.sampleIzh.find() )
@@ -60,6 +90,30 @@ def get_db():
 	modelsdb = db.sampleIzh
 	returnedModels = list(modelsdb.find())
 	return json_util.dumps(returnedModels)
+
+@app.route('/search_scope', methods =['GET'])
+def search_scope():
+    #Get the scope selection
+    scope = 'personal'
+    user._id = 'user1'
+    lab._id = 'lab2'
+    modelList = []
+    userIDList = []
+    userNameList = []
+    if scope == 'personal':
+        userList = user._id
+    elif scope == 'lab':
+        userIDList = list( db.Labs.find( {'_id' : user.Lab}, {'Users' : 1} ))
+        #Create list of First + Last name of each author
+        for userID in userIDList:
+            userNameList.extend( str( db.Users.find( {'_id' : userID} ).First_Name + db.Users.find( {'_id' : userID} ).Last_Name))
+        for userName in userNameList:
+            for collection in collectionSearchList:
+                modelList.extend( db.collection.find({'Author': userName}) )
+    #Get list of users included
+    #Get models with those users into the list
+    #Return the list
+    return render_template('index.html', year = 2014, mcount = len(modelList), db = modelList )
 
 
 # Serves static resources like css, js, images, etc.
