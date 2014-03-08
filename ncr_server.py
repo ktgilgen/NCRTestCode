@@ -42,10 +42,10 @@ def uploaded_file(filename):
 @app.route('/', methods=['GET'])
 def search_scopes():
     #Get the scope selection
-    scope = 'lab'
+    scope = 'global'
     user = list( db.Users.find( {'_id' : '6'}) )
     modelList = []
-    sampleList = list(db.Channels.find())
+    sampleList = list(db.Neuron.find())
     userIDList = []
     userNameList = []
     labList = []

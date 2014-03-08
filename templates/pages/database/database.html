@@ -6,40 +6,17 @@
  This page uses the form to send and get data from the web application.
  The page displays the database search options and search bar, then displays returned results to the user in a table.
  -->
-
-<!-- Form for sending variable data such as the model type check boxes, scope dropdown, and search words -->
-<div id="database" class="container page" ng-controller="DBController">
-<div><br/><br/><br/></div>
-<div><br/></div>
-<!-- The table displays the results of the database query by the server. Currently structured for displaying previews of models. -->
-<div class="btn-group">    
-    <!-- Largest Categories -->
-    {% include 'pages/database/Dropdowns/Descriptors.html' %}
-    <!-- Models -->
-    {% include 'pages/database/Dropdowns/ModelTypes.html' %}
-
-    <!-- Params -->
-    {% include 'pages/database/Dropdowns/Params.html' %}
-
-    <!-- Scopes -->
-    {% include 'pages/database/Dropdowns/Scopes.html' %}
-    
-
-</div>
-    
-    <br/>
-    <br/>
-    <!-- Sample Model Table -->
-    {% include 'pages/database/components/neuronTable.html' %}
-    
-    {% if mcount >= 10 %}
+<div id="database" class="container page" data-ng-controller="DBController">
+    <div class="span12">
     <br/><br/>
-    <ul class="pagination">
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-    {% endif %}
-
+    </div>
+	<div class="row">
+		<div class="col-md-2">
+			{% include 'pages/database/components/modelSearch.html' %} 
+		</div>
+		<div class="col-md-9">  
+			{% include 'pages/database/components/dataTable.html' %} 
+		</div>
+	</div>
+	{% include 'pages/database/components/dataTablePagination.html' %} 
 </div>
