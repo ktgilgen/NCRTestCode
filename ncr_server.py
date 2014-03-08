@@ -42,7 +42,9 @@ def uploaded_file(filename):
 @app.route('/', methods=['GET'])
 def mainPage():
     year = datetime.datetime.now().year
+    modelList = list( db.sampleIzh.find() )
     modelList = list(  list(db.Neuron.find() )  )
+    #modelList = list(db.Channels.find())
     return render_template('index.html', year = year, mcount = len( modelList), db =  modelList ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():
@@ -81,6 +83,30 @@ def get_db():
 	modelsdb = db.sampleIzh
 	returnedModels = list(modelsdb.find())
 	return json_util.dumps(returnedModels)
+
+@app.route('/search_scope', methods =['GET'])
+def search_scope():
+    #Get the scope selection
+    scope = 'personal'
+    user._id = 'user1'
+    lab._id = 'lab2'
+    modelList = []
+    userIDList = []
+    userNameList = []
+    if scope == 'personal':
+        userList = user._id
+    elif scope == 'lab':
+        userIDList = list( db.Labs.find( {'_id' : user.Lab}, {'Users' : 1} ))
+        #Create list of First + Last name of each author
+        for userID in userIDList:
+            userNameList.extend( str( db.Users.find( {'_id' : userID} ).First_Name + db.Users.find( {'_id' : userID} ).Last_Name))
+        for userName in userNameList:
+            for collection in collectionSearchList:
+                modelList.extend( db.collection.find({'Author': userName}) )
+    #Get list of users included
+    #Get models with those users into the list
+    #Return the list
+    return render_template('index.html', year = 2014, mcount = len(modelList), db = modelList )
 
 
 # Serves static resources like css, js, images, etc.
