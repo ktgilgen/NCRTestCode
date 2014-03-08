@@ -42,8 +42,7 @@ def uploaded_file(filename):
 @app.route('/', methods=['GET'])
 def mainPage():
     year = datetime.datetime.now().year
-    modelList = list( db.sampleIzh.find() )
-    modelList.extend(  list(db.sampleLIF.find() )  )
+    modelList = list(  list(db.Neuron.find() )  )
     return render_template('index.html', year = year, mcount = len( modelList), db =  modelList ) #, models = list( db.sampleIzh.find()) )
 
 def getmodels():
@@ -55,12 +54,11 @@ def displayResults():
     return render_template('index.html', year = year, returned = izhCollection.find_one( {"entity_type": "neuron"} ), count = 48)#numResults)
 
 def search_scopes():
-    scope = 'lab' #replace with form data
+    scope = 'global' #replace with form data
     user = list( db.Users.find( {'_id' : '6'}) ) #Replace with Gathered user's info
     modelList = []
     userIDList = []
     userNameList = []
-    labList = []
     
     if scope =='global':
         modelList = db.Channels.find()

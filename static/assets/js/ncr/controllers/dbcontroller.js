@@ -107,7 +107,19 @@ $("#searchModelsForm").submit(function(event) {
                               event.preventDefault();
                               });
 
-
+/* From http://www.benknowscode.com/2013/12/bootstrap-dropdown-button-select-box-control.html */
+$( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+                      
+                      var $target = $( event.currentTarget );
+                      
+                      $target.closest( '.btn-group' )
+                      .find( '[data-bind="securityLabel"]' ).text( $target.text() )
+                      .end()
+                      .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+                      
+                      return false;
+                      
+                      });
 
 /*
 // update file information on change event
