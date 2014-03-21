@@ -7,85 +7,58 @@ class ModelInfo(Document):
     __collection__ = 'Channels'
     __database__ = 'brainlab_test'
     structure = {
-        '_id':basestring,
         'entity_type': basestring,
         'entity_name':basestring,
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
-        'channel_parameters': {
+        'specification': {
             'type': basestring,
-            'v_half_active': { 'type':basestring, 'value':int},
-            'transaction_rate': { 'type': basestring, 'value': int},
-            'activation_slope': { 'type': basestring, 'value':int },
-            'deactivation_slope': { 'type': basestring, 'value': int},
-            'equilibrium_slope': { 'type': basestring, 'value': int},
-            'conductance': { 'type': basestring, 'value': int},
-            'reversal_potential': { 'type': basestring, 'value':int},
-            'm_initial': { 'type': basestring, 'value': int},
-            'm_power':{ 'type': basestring, 'value' : float}
+            'v_half': float,
+            'r': float,
+            'activation_slope': float,
+            'deactivation_slope': float,
+            'equilibrium_slope': float,
+            'conductance': float,
+            'reversal_potential': float,
+            'm_initial': float,
+            'm_power': float
                 
             }
     }
-    required_fields=['_id']
-    default_values={}
 
 connection = Connection(host="mongodb://braintest:braintest@ds041167.mongolab.com:41167/brainlab_test", port=27017)
 connection.register([ModelInfo])
 
-item1 = connection.ModelInfo({
-                             "_id": "df90sahf0sd9ha8sdhf8dhsa",
-                             "entity_type": "channel",
-                             "entity_name": "channel_vgi",
-                             "description": "This is an extended description of the entity",
-                             "author": "Nathan Jordan",
-                             "author_email": "njordan@cse.unr.edu",
-                             "channel_parameters": {
-                             "type": "voltage_gated_ion",
-                             "v_half_active": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "transaction_rate": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "activation_slope": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "deactivation_slope": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "equilibrium_slope": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "conductance": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "reversal_potential": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "m_initial": {
-                             "type": "exact",
-                             "value": 65
-                             },
-                             "m_power": {
-                                "type":"exact",
-                                "value":2.0
-                             }
-                             }
-                             }
-                             
-                             )
-
-for x in range(0, 11):
-    item1['_id'] = "vgi" + str(x)
-    item1.save(  ) #auto calls validate
+for x in range(0, 12):
+    item1 = connection.ModelInfo(
+                                 {
+                                 "entity_type": "channel",
+                                 "entity_name": "lif_channel_vgi_1",
+                                 "description": "This is an extended description of the entity",
+                                 "author": "Nathan Jordan",
+                                 "author_email": "njordan@cse.unr.edu",
+                                 "specification": {
+                                 "type": "lif_voltage_gated_ion",
+                                 "v_half": 65.0,
+                                 "r": 65.0,
+                                 "activation_slope": 65.0,
+                                 "deactivation_slope": 65.0,
+                                 "equilibrium_slope": 65.0,
+                                 "conductance": 65.0,
+                                 "reversal_potential": 65.0,
+                                 "m_initial": 65.0,
+                                 "m_power": 65.0
+                                 }
+                                 })
+    item1['entity_name'] = "lif_channel_vgi_" + str(x)
+    if x % 3 == 0:
+        item1['author'] = "Katie Gilgen"
+    elif x % 2 == 0:
+        item1['author'] = "Lander Burns"
+    else:
+        item1['author'] = "Aidan Dolan"
+    item1.save()
 
 
 
