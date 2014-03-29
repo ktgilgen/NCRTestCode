@@ -12,6 +12,7 @@ class StimulusModel(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification': {
             'type': basestring,
             'amplitude': int,
@@ -34,6 +35,7 @@ class Synapse_Flat(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int, 
         'specification': {
             'type': basestring,
                 'delay': float,
@@ -51,6 +53,7 @@ class Synapse_NCS(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification': {
             'type': basestring,
                 'utilization': float,
@@ -84,6 +87,7 @@ for x in range(0, 10):
                                         "description": "This is an extended description of the entity",
                                         "author": "Nathan Jordan",
                                         "author_email": "njordan@cse.unr.edu",
+                                        "votes" : 0,
                                         "specification":{
                                         "type": "rectangular_current",
                                         "amplitude": 2,
@@ -101,6 +105,7 @@ for x in range(0, 10):
                                       "description": "This is an extended description of the entity",
                                       "author": "Nathan Jordan",
                                       "author_email": "njordan@cse.unr.edu",
+                                          "votes" : 0,
                                       "specification": {
                                       "type": "flat",
                                       "delay": 65.0,
@@ -114,6 +119,7 @@ for x in range(0, 10):
                                         "description": "This is an extended description of the entity",
                                         "author": "Nathan Jordan",
                                         "author_email": "njordan@cse.unr.edu",
+                                            "votes" : 0,
                                         "specification": {
                                         "type": "ncs",
                                         "utilization": 65.0,

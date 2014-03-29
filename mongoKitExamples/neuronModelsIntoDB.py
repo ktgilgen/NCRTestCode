@@ -12,6 +12,7 @@ class HHNeuron(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification': {
             'type': basestring,
             'threshold' : float,
@@ -33,6 +34,7 @@ class IZHNeuron(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification': {
             'type': basestring,
                 'a': float,
@@ -54,6 +56,7 @@ class NCSNeuron(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int, 
         'specification': {
             'type': basestring,
                 'spikeshape': [int],
@@ -84,6 +87,7 @@ for x in range(0, 10):
                                    "description": "This is an extended description of the entity",
                                    "author": "Nathan Jordan",
                                    "author_email": "njordan@cse.unr.edu",
+                                   "votes" : 0,
                                    "specification": {
                                    "type": "ncs",
                                    "spikeshape": [
@@ -125,6 +129,7 @@ for x in range(0, 10):
                              "description": "This is an extended description of the entity",
                              "author": "Nathan Jordan",
                              "author_email": "njordan@cse.unr.edu",
+                                 "votes" : 0,
                              "specification": {
                              "type": "hh",
                              "threshhold": 65.0,
@@ -147,6 +152,7 @@ for x in range(0, 10):
                                "description": "This is an extended description of the entity",
                                "author": "Nathan Jordan",
                                "author_email": "njordan@cse.unr.edu",
+                                   "votes" : 0,
                                "specification": {
                                "type": "izhikevich",
                                "a": 0.02,

@@ -12,6 +12,7 @@ class ModelInfo(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes':int,
         'specification': {
             'type': basestring,
             'm_initial': float,
@@ -39,6 +40,7 @@ for x in range(0, 12):
                                  "description": "This is an extended description of the entity",
                                  "author": "Nathan Jordan",
                                  "author_email": "njordan@cse.unr.edu",
+                                 "votes": 0,
                                  "specification": {
                                  "type": "lif_calcium_dependant",
                                  "m_initial": 65.0,

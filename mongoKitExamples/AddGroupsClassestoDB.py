@@ -12,6 +12,7 @@ class Group(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification' : {
             'geometry': {'width': float, 'height': float, 'depth': float},
             'subgroups':    [{
@@ -49,6 +50,7 @@ for x in range (0, 10):
                             "description": "This is an extended description of the entity",
                             "author": "Nathan Jordan",
                             "author_email": "njordan@cse.unr.edu",
+                            "votes" : 0,
                             "specification": {
                             "geometry": {
                             "width": 100.0,

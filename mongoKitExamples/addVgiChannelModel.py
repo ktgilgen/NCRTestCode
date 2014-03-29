@@ -12,6 +12,7 @@ class ModelInfo(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'votes' : int,
         'specification': {
             'type': basestring,
             'v_half': float,
@@ -38,6 +39,7 @@ for x in range(0, 12):
                                  "description": "This is an extended description of the entity",
                                  "author": "Nathan Jordan",
                                  "author_email": "njordan@cse.unr.edu",
+                                 "votes": 0,
                                  "specification": {
                                  "type": "lif_voltage_gated_ion",
                                  "v_half": 65.0,
