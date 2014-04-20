@@ -12,6 +12,8 @@ class ModelInfo(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'author_id' : basestring,
+        'scope' : basestring,
         'votes' : int,
         'specification': {
             'type': basestring,
@@ -31,15 +33,17 @@ class ModelInfo(Document):
 connection = Connection(host="mongodb://braintest:braintest@ds041167.mongolab.com:41167/brainlab_test", port=27017)
 connection.register([ModelInfo])
 
-for x in range(0, 12):
+for x in range(0, 4):
     item1 = connection.ModelInfo(
                                  {
                                  "entity_type": "channel",
                                  "entity_name": "lif_channel_vgi_1",
                                  "description": "This is an extended description of the entity",
-                                 "author": "Nathan Jordan",
-                                 "author_email": "njordan@cse.unr.edu",
+                                 "author": "Alex Falconi",
+                                 "author_email": "exavior75@yahoo.com",
                                  "votes": 0,
+                                 "scope" : "UNR",
+                                 "author_id" : "5346e8b51d41c810b40ccc3c",
                                  "specification": {
                                  "type": "lif_voltage_gated_ion",
                                  "v_half": 65.0,
@@ -56,10 +60,16 @@ for x in range(0, 12):
     item1['entity_name'] = "lif_channel_vgi_" + str(x)
     if x % 3 == 0:
         item1['author'] = "Katie Gilgen"
+        item1['author_email'] = "ktgilgen@gmail.com"
+        item1['author_id'] = "53543c681d41c80bc6a98b07"
+        item1['scope'] = "UNR"
+    
+    
     elif x % 2 == 0:
-        item1['author'] = "Lander Burns"
-    else:
-        item1['author'] = "Aidan Dolan"
+        item1['author'] = "Big Farma"
+        item1['author_email'] = "bigfarma@gmail.com"
+        item1['author_id'] = "53543c8d1d41c80bc6a98b08"
+        item1['scope'] = "Cincinnati Neuroscience"
     item1.save()
 
 

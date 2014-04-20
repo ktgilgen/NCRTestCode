@@ -11,8 +11,9 @@ ncsNeuron = connection.NCS({ "_id": "df90sahf0sd9ha8sdhf8dhsa",
                                      "entity_type": "neuron",
                                      "entity_name": "BasalGanglia",
                                      "description": "This is an extended description of the entity",
-                                     "author": "Nathan Jordan",
-                                     "author_email": "njordan@cse.unr.edu",
+                                     "author": "Katie Gilgen",
+                                     "author_email": "ktgilgen@gmail.com",
+                                    
                              "specification": {
                              "type": "ncs",
                              "parameters": {
@@ -30,6 +31,7 @@ ncsNeuron = connection.NCS({ "_id": "df90sahf0sd9ha8sdhf8dhsa",
                                                   {"channel_id": "kfjdasfj90j90ahs90dhf", "count": 4},
                                                   {"channel_id": "jf890dash8sdghf89asghdf","count": 4}]
                                      }}})
+
 hhNeuron = connection.HodgkinHuxley({"_id": "df90sahf0sd9ha8sdhf8dhsa",
                                     "entity_type": "neuron",
                                     "entity_name": "BasalGanglia",
@@ -46,6 +48,7 @@ hhNeuron = connection.HodgkinHuxley({"_id": "df90sahf0sd9ha8sdhf8dhsa",
                                                  { "channel_id": "kfjdasfj90j90ahs90dhf", "count": 4},
                                                  { "channel_id": "jf890dash8sdghf89asghdf", "count": 4}]
                                     }}})
+
 izhNeuron = connection.Izhikevich({
                                   "_id": "ajsd9fd90ha0hsd80fhd80sha",
                                   "entity_type": "neuron",

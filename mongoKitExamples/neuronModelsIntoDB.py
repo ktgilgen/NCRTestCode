@@ -13,6 +13,8 @@ class HHNeuron(Document):
         'author': basestring,
         'author_email': basestring,
         'votes' : int,
+        'scope' : basestring,
+        'author_id' : basestring,
         'specification': {
             'type': basestring,
             'threshold' : float,
@@ -35,6 +37,8 @@ class IZHNeuron(Document):
         'author': basestring,
         'author_email': basestring,
         'votes' : int,
+            'scope' : basestring,
+        'author_id' : basestring,
         'specification': {
             'type': basestring,
                 'a': float,
@@ -57,6 +61,8 @@ class NCSNeuron(Document):
         'author': basestring,
         'author_email': basestring,
         'votes' : int, 
+            'scope' : basestring,
+        'author_id' : basestring,
         'specification': {
             'type': basestring,
                 'spikeshape': [int],
@@ -85,9 +91,11 @@ for x in range(0, 10):
                                    "entity_type": "neuron",
                                    "entity_name": "ncs_neuron_1",
                                    "description": "This is an extended description of the entity",
-                                   "author": "Nathan Jordan",
-                                   "author_email": "njordan@cse.unr.edu",
+                                   "author": "Katie gilgen",
+                                   "author_email": "ktgilgen@gmail.com",
                                    "votes" : 0,
+                                   "scope" : "UNR",
+                                   "author_id" : "53543c681d41c80bc6a98b07",
                                    "specification": {
                                    "type": "ncs",
                                    "spikeshape": [
@@ -127,9 +135,11 @@ for x in range(0, 10):
                              "entity_type": "neuron",
                              "entity_name": "hh_neuron_1",
                              "description": "This is an extended description of the entity",
-                             "author": "Nathan Jordan",
-                             "author_email": "njordan@cse.unr.edu",
+                                 "author": "Katie gilgen",
+                                 "author_email": "ktgilgen@gmail.com",
                                  "votes" : 0,
+                                 "scope" : "UNR",
+                                 "author_id" : "53543c681d41c80bc6a98b07",
                              "specification": {
                              "type": "hh",
                              "threshhold": 65.0,
@@ -150,9 +160,11 @@ for x in range(0, 10):
                                "entity_type": "neuron",
                                "entity_name": "neuron_izh_1",
                                "description": "This is an extended description of the entity",
-                               "author": "Nathan Jordan",
-                               "author_email": "njordan@cse.unr.edu",
+                                   "author": "Katie gilgen",
+                                   "author_email": "ktgilgen@gmail.com",
                                    "votes" : 0,
+                                   "scope" : "UNR",
+                                   "author_id" : "53543c681d41c80bc6a98b07",
                                "specification": {
                                "type": "izhikevich",
                                "a": 0.02,
@@ -164,10 +176,18 @@ for x in range(0, 10):
                                "threshold": 30
                                }
                                })
-    if x %  3 == 0:
-        ncsItem['author'] = "Riley Carroll"
-        hhItem['author'] = "Lander Burns"
-        izhItem['author'] = "Aidan Dolan"
+    if x % 3 == 0:
+        izhItem['author'] = "Alex Falconi"
+        izhItem['author_email'] = "exavior75@yahoo.com"
+        izhItem['author_id'] = "5346e8b51d41c810b40ccc3c"
+        izhItem['scope'] = "UNR"
+    
+    
+    elif x % 2 == 0:
+        hhItem['author'] = "Big Farma"
+        hhItem['author_email'] = "bigfarma@gmail.com"
+        hhItem['author_id'] = "53543c8d1d41c80bc6a98b08"
+        hhItem['scope'] = "Cincinnati Neuroscience"
     
     ncsItem['entity_name'] = 'ncs' + str(x)
     hhItem['entity_name'] = 'hh' + str(x)

@@ -12,6 +12,8 @@ class StimulusModel(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+        'author_id' : basestring,
+        'scope' : basestring,
         'votes' : int,
         'specification': {
             'type': basestring,
@@ -35,6 +37,8 @@ class Synapse_Flat(Document):
         'description': basestring,
         'author': basestring,
         'author_email': basestring,
+            'author_id' : basestring,
+        'scope' : basestring,
         'votes' : int, 
         'specification': {
             'type': basestring,
@@ -54,6 +58,8 @@ class Synapse_NCS(Document):
         'author': basestring,
         'author_email': basestring,
         'votes' : int,
+            'author_id' : basestring,
+        'scope' : basestring,
         'specification': {
             'type': basestring,
                 'utilization': float,
@@ -80,13 +86,15 @@ connection = Connection(host="mongodb://braintest:braintest@ds041167.mongolab.co
 connection.register([StimulusModel, Synapse_Flat, Synapse_NCS])
 
 
-for x in range(0, 10):
+for x in range(0, 5):
     stimItem = connection.StimulusModel({
                                         "entity_type": "stimulus",
                                         "entity_name": "stimulus_1",
                                         "description": "This is an extended description of the entity",
-                                        "author": "Nathan Jordan",
-                                        "author_email": "njordan@cse.unr.edu",
+                                        "author": "Big Farma",
+                                        "author_email": "bigfarma@gmail.com",
+                                        "author_id" : "53543c8d1d41c80bc6a98b08",
+                                        "scope" : "Cincinnati Neuroscience",
                                         "votes" : 0,
                                         "specification":{
                                         "type": "rectangular_current",
@@ -103,8 +111,10 @@ for x in range(0, 10):
                                       "entity_type": "synapse",
                                       "entity_name": "synapse_2",
                                       "description": "This is an extended description of the entity",
-                                      "author": "Nathan Jordan",
-                                      "author_email": "njordan@cse.unr.edu",
+                                          "author": "Big Farma",
+                                          "author_email": "bigfarma@gmail.com",
+                                          "author_id" : "53543c8d1d41c80bc6a98b08",
+                                          "scope" : "Cincinnati Neuroscience",
                                           "votes" : 0,
                                       "specification": {
                                       "type": "flat",
@@ -117,8 +127,10 @@ for x in range(0, 10):
                                         "entity_type": "synapse",
                                         "entity_name": "synapse_1",
                                         "description": "This is an extended description of the entity",
-                                        "author": "Nathan Jordan",
-                                        "author_email": "njordan@cse.unr.edu",
+                                            "author": "Big Farma",
+                                            "author_email": "bigfarma@gmail.com",
+                                            "author_id" : "53543c8d1d41c80bc6a98b08",
+                                            "scope" : "Cincinnati Neuroscience",
                                             "votes" : 0,
                                         "specification": {
                                         "type": "ncs",
@@ -140,9 +152,21 @@ for x in range(0, 10):
                                         }
                                         })
     if x % 2 == 0:
-        stimItem['author'] = "Alex Falconi"
+        stimItem['author'] = "Katie Gilgen"
+        stimItem['author_email'] = "ktgilgen@gmail.com"
+        stimItem['scope'] = "UNR"
+        stimItem['author_id'] = "53543c681d41c80bc6a98b07"
+        
         ncsSynapseItem['author'] = "Alex Falconi"
+        ncsSynapseItem['author_email'] = "exavior75@yahoo.com"
+        ncsSynapseItem['scope'] = "UNR"
+        ncsSynapseItem['author_id'] = "5346e8b51d41c810b40ccc3c"
+        
         synapseItem['author'] = "Alex Falconi"
+        synapseItem['author_email'] = "exavior75@yahoo.com"
+        synapseItem['scope'] = "UNR"
+        synapseItem['author_id'] = "5346e8b51d41c810b40ccc3c"
+    
     stimItem['entity_name'] = 'stim' + str(x)
     synapseItem['entity_name'] = 'synapse' + str(x)
     ncsSynapseItem['entity_name'] = 'synapse_ncs' + str(x)
